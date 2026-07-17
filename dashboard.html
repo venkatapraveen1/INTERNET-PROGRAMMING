@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <header class="dashboard-header card">
+            <h1 id="welcomeMessage" class="center-text">Welcome back!</h1>
+            <div class="center-text mt-20">
+                <button id="logoutBtn" class="blue-btn" style="width: auto; padding: 8px 16px;">Logout</button>
+            </div>
+        </header>
+
+        <main class="grid-layout">
+            <div class="card grid-card">
+                <h2 class="center-text">About Us</h2>
+                <p class="center-text">We are glad to have you back in our community. Explore the features and services we offer.</p>
+            </div>
+            
+            <div class="card grid-card">
+                <h2 class="center-text">Updates</h2>
+                <div class="scrolling-container">
+                    <p class="scrolling-text">Welcome to our website! ✨ Check out our new services. ✨ Enjoy your stay!</p>
+                </div>
+            </div>
+            
+            <div class="card grid-card">
+                <h2 class="center-text">Contact</h2>
+                <p class="center-text">Need help? Get in touch with our support team.</p>
+                <div class="center-text mt-20">
+                    <button class="blue-btn" style="width: auto; padding: 8px 16px;">Contact Us</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (!currentUser) {
+            window.location.href = 'index.html'; // Redirect to login if not authenticated
+        } else {
+            document.getElementById('welcomeMessage').innerText = `Welcome back, ${currentUser.name}!`;
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
